@@ -3,7 +3,6 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   btn: {
-    margin: '5%',
     border: '1px solid black',
     width: 240,
     height: 60,
@@ -14,16 +13,27 @@ const useStyles = createUseStyles({
     cursor: 'pointer',
     color: 'black',
     backgroundColor: 'white',
+    transition: '0.5s ease',
     '&:hover': {
       backgroundColor: 'black',
       color: 'white',
+      transition: '0.5s ease',
     },
   },
 });
 
-const DecrementBtn = () => {
+const DecrementBtn = ({ counter, setCounter }) => {
   const classes = useStyles();
-  return <button className={classes.btn}>- decrement</button>;
+
+  const onDecrement = () => {
+    if (counter > 0) setCounter(counter - 1);
+  };
+
+  return (
+    <button className={classes.btn} onClick={() => onDecrement()}>
+      - decrement
+    </button>
+  );
 };
 
 export default DecrementBtn;

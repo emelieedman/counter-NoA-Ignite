@@ -3,7 +3,6 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   btn: {
-    margin: '5%',
     border: 'none',
     width: 240,
     height: 60,
@@ -14,15 +13,29 @@ const useStyles = createUseStyles({
     cursor: 'pointer',
     color: 'white',
     backgroundColor: 'hotpink',
+    transition: '0.5s ease',
     '&:hover': {
       backgroundColor: 'rebeccapurple',
+      transition: '0.5s ease',
     },
   },
 });
 
-const IncrementBtn = () => {
+const IncrementBtn = ({ counter, setCounter, repos }) => {
   const classes = useStyles();
-  return <button className={classes.btn}>+ increment</button>;
+  console.log(counter);
+
+  const onIncrement = () => {
+    if (counter < repos.length - 1) {
+      setCounter(counter + 1);
+    }
+  };
+
+  return (
+    <button className={classes.btn} onClick={() => onIncrement()}>
+      + increment
+    </button>
+  );
 };
 
 export default IncrementBtn;
