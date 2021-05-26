@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { createUseStyles } from 'react-jss';
+import DecrementBtn from './components/DecrementBtn/DecrementBtn';
+import IncrementBtn from './components/IncrementBtn/IncrementBtn';
+
+const useStyles = createUseStyles({
+  wrapper: {
+    display: 'flex',
+    width: '100vw',
+    height: '100vh',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.wrapper}>
+      <DecrementBtn />
+      <IncrementBtn />
     </div>
   );
 }
