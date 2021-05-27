@@ -3,7 +3,10 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   container: {
-    width: '60vw',
+    width: '43vw',
+    '@media only screen and (max-width: 769px)': {
+      width: '60vw',
+    },
   },
   fullName: {
     fontSize: 28,
@@ -22,9 +25,15 @@ const RepositoryInfo = ({ repo }) => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.fullName}>{repo.full_name}</h2>
+      {repo.full_name && repo.description && repo.stargazers_count ? (
+        <h2 className={classes.fullName}>{repo.full_name}</h2>
+      ) : (
+        <h2>Error: This repository could not be found..</h2>
+      )}
       <p className={classes.description}>{repo.description}</p>
-      <p className={classes.stars}>&#127775;{repo.stargazers_count}</p>
+      {repo.stargazers_count ? (
+        <p className={classes.stars}>&#127775;{repo.stargazers_count}</p>
+      ) : null}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+
 import DecrementBtn from './components/DecrementBtn/DecrementBtn';
 import IncrementBtn from './components/IncrementBtn/IncrementBtn';
 import Counter from './components/Counter/Counter';
@@ -25,7 +26,7 @@ const useStyles = createUseStyles({
     '@media only screen and (min-width: 769px)': {
       display: 'grid',
       gridTemplateRows: '40vh 60vh',
-      width: 'max-content',
+      width: 'fit-content',
       height: '98vh',
     },
   },
@@ -41,6 +42,7 @@ const useStyles = createUseStyles({
       display: 'grid',
       gridTemplateColumns: 'repeat(3, max-content)',
       alignItems: 'flex-end',
+      width: 'fit-content',
     },
   },
   repoInfo: {
@@ -71,7 +73,7 @@ function App() {
     getRepos(repositoryNames).then(setRepos);
   }, []);
 
-  if (!repos.length) return null; // visa loader!!!
+  if (!repos.length) return null;
 
   return (
     <div className={classes.flexContainer}>
