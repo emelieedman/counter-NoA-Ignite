@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     },
   },
   fullName: {
-    fontSize: 28,
+    fontSize: 22,
   },
   description: {
     fontSize: 18,

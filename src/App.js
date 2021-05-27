@@ -15,12 +15,10 @@ const useStyles = createUseStyles({
   },
   gridContainer: {
     '@media only screen and (max-width: 769px)': {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '60vh',
-      marginTop: '20vh',
+      display: 'grid',
+      gridTemplateRows: '50vh 50vh',
+      width: 'fit-content',
+      height: '98vh',
     },
 
     '@media only screen and (min-width: 769px)': {
@@ -35,7 +33,9 @@ const useStyles = createUseStyles({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-around',
+      alignItems: 'center',
       height: ' 40vh',
+      alignSelf: 'flex-end',
     },
     '@media only screen and (min-width: 769px)': {
       gridRowStart: 1,
@@ -46,9 +46,12 @@ const useStyles = createUseStyles({
     },
   },
   repoInfo: {
-    marginTop: '10vh',
     '@media only screen and (max-width: 769px)': {
-      alignSelf: 'center',
+      alignSelf: 'flex-start',
+      marginTop: '5vh',
+    },
+    '@media only screen and (min-width: 769px)': {
+      marginTop: '10vh',
     },
   },
 });
