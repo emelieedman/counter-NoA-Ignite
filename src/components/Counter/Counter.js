@@ -4,6 +4,9 @@ import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles({
   counter: {
     fontSize: 24,
+    textAlign: 'center',
+    marginLeft: '5vw',
+    marginRight: '5vw',
   },
 });
 

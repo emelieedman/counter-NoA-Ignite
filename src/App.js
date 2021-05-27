@@ -7,36 +7,48 @@ import RepositoryInfo from './components/RepositoryInfo/RepositoryInfo';
 import { getRepos } from './services/github/github';
 
 const useStyles = createUseStyles({
-  wrapper: {
-    margin: {
-      left: '20vw',
-      right: '20vw',
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  gridContainer: {
+    '@media only screen and (max-width: 769px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '60vh',
+      marginTop: '20vh',
     },
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, minmax(300px, 20vw))',
-    width: '60vw',
-    height: '98vh',
-    alignItems: 'center',
-    justifyItems: 'center',
+
+    '@media only screen and (min-width: 769px)': {
+      display: 'grid',
+      gridTemplateRows: '40vh 60vh',
+      width: 'max-content',
+      height: '98vh',
+    },
+  },
+  subGrid: {
+    '@media only screen and (max-width: 769px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      height: ' 40vh',
+    },
+    '@media only screen and (min-width: 769px)': {
+      gridRowStart: 1,
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, max-content)',
+      alignItems: 'flex-end',
+    },
   },
   repoInfo: {
-    gridColumnStart: 2,
+    marginTop: '10vh',
+    '@media only screen and (max-width: 769px)': {
+      alignSelf: 'center',
+    },
   },
- 
-   // Extra small devices (phones, 600px and down) 
-'@media only screen and (max-width: 600px)': {...},
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-'@media only screen and (min-width: 600px)': {...},
-
-/* Medium devices (landscape tablets, 768px and up) */
-'@media only screen and (min-width: 768px)': {...},
-
-/* Large devices (laptops/desktops, 992px and up) */
-'@media only screen and (min-width: 992px)': {...},
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-'@media only screen and (min-width: 1200px)': {...}, 
 });
 
 const repositoryNames = [
@@ -62,20 +74,24 @@ function App() {
   if (!repos.length) return null; // visa loader!!!
 
   return (
-    <div className={classes.wrapper}>
-      <DecrementBtn
-        counter={counter}
-        setCounter={setCounter}
-        repos={repositoryNames}
-      />
-      <Counter counter={counter} setCounter={setCounter} />
-      <IncrementBtn
-        counter={counter}
-        setCounter={setCounter}
-        repos={repositoryNames}
-      />
-      <div className={classes.repoInfo}>
-        <RepositoryInfo repo={repos[counter]} />
+    <div className={classes.flexContainer}>
+      <div className={classes.gridContainer}>
+        <div className={classes.subGrid}>
+          <DecrementBtn
+            counter={counter}
+            setCounter={setCounter}
+            repos={repositoryNames}
+          />
+          <Counter counter={counter} setCounter={setCounter} />
+          <IncrementBtn
+            counter={counter}
+            setCounter={setCounter}
+            repos={repositoryNames}
+          />
+        </div>
+        <div className={classes.repoInfo}>
+          <RepositoryInfo repo={repos[counter]} />
+        </div>
       </div>
     </div>
   );
