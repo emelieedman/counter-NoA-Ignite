@@ -3,3 +3,14 @@ export const getRepo = (repositoryName) => {
     data.json()
   );
 };
+
+export const getRepos = async (repositoryNames) => {
+  if (localStorage.getItem('repos') === null) {
+    return Promise.all(repositoryNames.map(getRepo)).then((repos) => {
+      localStorage.setItem('repos', JSON.stringify(repos));
+      return repos;
+    });
+  } else {
+    return JSON.parse(localStorage.getItem('repos'));
+  }
+};
